@@ -1,9 +1,12 @@
+package task3;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * oop2016ut collections vol2
- * @author Taavi Ilp
+/*
+ * This class has a very fundamental problem that makes it
+ * unsuitable for a hashmap key. Some functionality must be
+ * removed to make it work reliably.
  */
 public class Company {
 
@@ -24,16 +27,11 @@ public class Company {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    Company company = (Company) o;
-
-    return name.equals(company.name);
-  }
-
-  @Override
-  public int hashCode() {
-    return name.hashCode();
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Company other = (Company) o;
+    return name.equals(other.name) && customerNames.equals(other.customerNames);
   }
 }
